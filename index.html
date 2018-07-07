@@ -20,7 +20,7 @@
     const KEYCODE = {
         SPACE: 32,
     };
-    
+
     const template = document.createElement('template');
     template.innerHTML = `
       <style>
@@ -51,7 +51,6 @@
       </style>
   `;
 
-  
   class HowToCheckbox extends HTMLElement {
     static get observedAttributes() {
       return ['checked', 'disabled'];
@@ -62,8 +61,8 @@
       this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
-    connectedCallback() { 
-            
+    connectedCallback() {
+
       if (!this.hasAttribute('role'))
         this.setAttribute('role', 'checkbox');
       if (!this.hasAttribute('tabindex'))
@@ -99,7 +98,6 @@
     get disabled() {
       return this.hasAttribute('disabled');
     }
-    
 
     _upgradeProperty(prop) {
       if (this.hasOwnProperty(prop)) {
@@ -122,7 +120,7 @@
           break;
         case 'disabled':
           this.setAttribute('aria-disabled', hasValue);
-          
+
         if (hasValue) {
           this.removeAttribute('tabindex');
             this.blur();
@@ -168,6 +166,5 @@
 
   window.customElements.define('howto-checkbox', HowToCheckbox);
 })();
-
 
 </script>
